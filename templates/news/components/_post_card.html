@@ -1,0 +1,13 @@
+{% for post in posts %}
+<div class="shadow col-sm-3 mb-sm-5 bg-white rounded">
+    <div class="card" style="width: 18rem;">
+        <img src="https://sun9-54.userapi.com/impg/47CGI69JDV-VlBHlai4YypIvw9_Lba9uyDjbkQ/bBVUhxR-xDM.jpg?size=604x332&quality=96&sign=464d9dd384a4046f5a9fe4b7f6e6bb13&type=album" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content | truncate(50) }}</p>
+            <a href="{{ url_for('post_detail', id=post.id) }}" class="btn btn-primary">Читать</a>
+            <div><div style="margin-top: 20px;"></div></div>
+        </div>
+    </div>
+</div>
+{% endfor %}
