@@ -44,24 +44,27 @@
 
                 <div align="right">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% if not current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Войти</a>
+                            <a class="nav-link active" aria-current="page" href="{{ url_for('user_login') }}">Войти</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Зарегистрироваться</a>
+                            <a class="nav-link" href="{{ url_for('user_registration') }}">Зарегистрироваться</a>
                         </li>
+                        {% else %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Здравствуй пользователь
+                                Здравствуй {{ current_user }}
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Админка</a></li>
                                 <li><a class="dropdown-item" href="#">Моя страничка</a></li>
                                 <li><a class="dropdown-item" href="{{ url_for('create_post') }}">Добавить статью</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Выйти</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('logout') }}">Выйти</a></li>
                             </ul>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
