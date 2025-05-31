@@ -27,6 +27,8 @@ class Post(db.Model):
     category_id = mapped_column(ForeignKey('category.id')) # Связывание айди поста с айди категории
     category = db.relationship('Category', back_populates='posts') # Связывание моделей между собой
     picture = db.Column(db.String(), nullable=True)
+    author_id = db.Column(ForeignKey('users.id'), nullable=True) # Связать модельку с юзером по айди
+    author = db.relationship('User', back_populates='posts') # Связать модельку с юзером
 
     def __repr__(self):
         return self.title
@@ -44,6 +46,7 @@ class User(db.Model, UserMixin):
     photo = db.Column(db.String(), nullable=True)
     password = db.Column(db.String(500))
     is_staff = db.Column(db.Boolean, default=False)
+    posts = db.relationship('Post', back_populates='author') #  связать модельку с автором
 
     def __repr__(self):
         return self.username

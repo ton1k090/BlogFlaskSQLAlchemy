@@ -1,5 +1,5 @@
 from news import app
-from news import views
+from news import views, admins
 
 
 if __name__ == '__main__':

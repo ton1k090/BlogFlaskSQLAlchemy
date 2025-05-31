@@ -8,6 +8,12 @@
 {% block body %}
 {% include 'news/components/_category_button.html' %}
 
+{% for message in get_flashed_messages() %}
+
+{% endfor %}
+
+
+
 <div class="row">
     {% include 'news/components/_post_card.html' %}
 </div>

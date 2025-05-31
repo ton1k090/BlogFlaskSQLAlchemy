@@ -1,27 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Регистрация
+  Редактирование профиля
 {% endblock title %}
 
-
 {% block body %}
-<form action="{{ url_for('user_registration') }}" method="post">
+<h2 class="text-center">Редактирование профиля</h2>
+<form action="#" method="post" enctype="multipart/form-data">
     <div class="d-flex justify-content-center" >
         <div class="col-md-8">
-            {% include 'news/components/_form_errors.html' %}
-            <h2 class="text-center">
-                Регистрация пользователя
-            </h2>
             {% for field in form %}
             <div class="card-body">
                 {{ field.label() }}
                 {{ field(class='form-control') }}
             </div>
             {% endfor %}
-            <button type="submit" class="btn btn-success btn-lg">
-                Регистрировать
-            </button>
+            <br>
+            <button type="submit" class="btn btn-success btn-lg">Применить</button>
+            <a href="{{ url_for('user_profile', id=current_user.id) }}" class="btn btn-outline-secondary">Назад</a>
         </div>
     </div>
 </form>
